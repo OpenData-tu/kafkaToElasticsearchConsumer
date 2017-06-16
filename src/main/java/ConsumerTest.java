@@ -31,28 +31,24 @@ public class ConsumerTest implements Runnable {
 
         ConsumerIterator<byte[], byte[]> it = m_stream.iterator();
 
-        while (it.hasNext()){
+        while (it.hasNext()) {
             HttpEntity entity = new NStringEntity(
                     new String(it.next().message()), ContentType.APPLICATION_JSON);
 
             try {
                 Response indexResponse = restClient.performRequest(
                         "POST",
-                        "/weather/luften/",
+                        "/weather/luftdaten/",
                         Collections.<String, String>emptyMap(),
                         entity);
 
+                System.out.println("Thread " + m_threadNumber + ": " + new String(it.next().message()));
+
+
+                restClient.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-            System.out.println("Thread " + m_threadNumber + ": " + new String(it.next().message()));
-        }
-
-        try {
-            restClient.close();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
 
         System.out.println("Shutting down Thread: " + m_threadNumber);
