@@ -45,10 +45,16 @@ public class ConsumerTest implements Runnable {
                 System.out.println("Thread " + m_threadNumber + ": " + new String(it.next().message()));
 
 
-                restClient.close();
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+
+        try {
+            restClient.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
         System.out.println("Shutting down Thread: " + m_threadNumber);
