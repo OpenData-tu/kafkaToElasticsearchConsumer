@@ -42,7 +42,8 @@ public class ConsumerTest implements Runnable {
                         Collections.<String, String>emptyMap(),
                         entity);
 
-                System.out.println("Thread " + m_threadNumber + ": " + new String(it.next().message()));
+              //  System.out.println("Thread " + m_threadNumber + ": " + new String(it.next().message()));
+                System.out.print('.');
 
 
             } catch (IOException e) {
