@@ -45,7 +45,6 @@ public class ConsumerTest implements Runnable {
                 System.out.println("Thread " + m_threadNumber + ": " + new String(it.next().message()));
 
 
-
             } catch (IOException e) {
                 e.printStackTrace();
             }
